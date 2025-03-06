@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF5500",
+                        dark: {
+                            100: "#2A2A2A",
+                            200: "#1A1A1A",
+                            300: "#121212",
+                        }
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #FF5500, #FF8C00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar {
+            position: relative;
+            height: 8px;
+            border-radius: 4px;
+            background: #2A2A2A;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: var(--width, 0%);
+            background: linear-gradient(90deg, #FF5500, #FF8C00);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-dark-300 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-dark-300/90 backdrop-blur-sm z-50 border-b border-dark-100">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold gradient-text">Portfolio</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="hover:text-primary transition-colors">About</a>
+                <a href="#skills" class="hover:text-primary transition-colors">Skills</a>
+            </div>
+            <button class="md:hidden text-2xl" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-dark-200 border-b border-dark-100" id="mobile-menu">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#home" class="hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="hover:text-primary transition-colors">About</a>
+                <a href="#skills" class="hover:text-primary transition-colors">Skills</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 py-12 md:py-24">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0 animate-on-scroll">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span class="gradient-text">Chin
+                            Kosal</span></h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-6">Mobile & Web Developer</h2>
+                    <p class="text-gray-400 mb-8 max-w-lg">I create beautiful, functional websites and applications that
+                        provide exceptional user experiences.</p>
+                    <div class="flex space-x-4 mb-8">
+                        <a href="#contact"
+                            class="bg-primary hover:bg-orange-600 text-white px-6 py-3 rounded-full transition-colors">Get
+                            in Touch</a>
+                        <a href="#projects"
+                            class="border border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-full transition-colors">View
+                            Work</a>
+                    </div>
+                    <div class="flex space-x-6 text-gray-400">
+                        <a href="#" class="hover:text-primary transition-colors text-xl"><i
+                                class="fab fa-github"></i></a>
+                        <a href="#" class="hover:text-primary transition-colors text-xl"><i
+                                class="fab fa-linkedin"></i></a>
+                        <a href="#" class="hover:text-primary transition-colors text-xl"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#" class="hover:text-primary transition-colors text-xl"><i
+                                class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center animate-on-scroll" style="--delay: 0.3s">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary">
+                            <img src="images/me.jpg" alt="Profile" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="absolute -top-6 -right-6 bg-dark-200 p-4 rounded-lg shadow-lg">
+                            <div class="text-center">
+                                <p class="text-3xl font-bold gradient-text">2+</p>
+                                <p class="text-xs text-gray-400">Years Experience</p>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-6 -left-6 bg-dark-200 p-4 rounded-lg shadow-lg">
+                            <div class="text-center">
+                                <p class="text-3xl font-bold gradient-text">5+</p>
+                                <p class="text-xs text-gray-400">Projects Completed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:block animate-bounce-slow">
+                <a href="#about" class="text-gray-400 hover:text-primary transition-colors">
+                    <i class="fas fa-chevron-down text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-dark-200">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">About <span class="gradient-text">Me</span></h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0 animate-on-scroll">
+                    <img src="images/hrdg12.png" alt="About Me" class="rounded-lg shadow-xl mx-auto" />
+                </div>
+                <div class="md:w-1/2 md:pl-12 animate-on-scroll" style="--delay: 0.3s">
+                    <h3 class="text-2xl font-semibold mb-4">Who am I?</h3>
+                    <p class="text-gray-400 mb-6">I'm a passionate web developer and designer with over 5 years of
+                        experience creating digital experiences that users love. I specialize in building responsive,
+                        accessible websites and applications using modern technologies.</p>
+                    <p class="text-gray-400 mb-6">My journey in web development started when I was in college, and I've
+                        been hooked ever since. I love the blend of technical problem-solving and creative design that
+                        web development offers.</p>
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 mb-8">
+                        <div>
+                            <p class="font-semibold">Phone:</p>
+                            <p class="text-gray-400">088 768 3082</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold">Email:</p>
+                            <p class="text-gray-400">nangapple82@gmail.com</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold">Born:</p>
+                            <p class="text-gray-400">Kampong Thmar, KPT</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold">Now:</p>
+                            <p class="text-gray-400">Phnom Penh</p>
+                        </div>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1-XmSYgCKdymY1XGWvRrWWmmXfT6aKsoL"
+                        class="bg-primary hover:bg-orange-600 text-white px-6 py-3 rounded-full transition-colors inline-block">
+                        Download CV
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="gradient-text">Skills</span></h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+                <p class="text-gray-400 mt-6 max-w-2xl mx-auto">I've worked with a variety of technologies and tools
+                    throughout my career. Here are some of my key skills and expertise.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <div class="animate-on-scroll">
+                    <h3 class="text-xl font-semibold mb-6">Technical Skills</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Web Design</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Mobile Flutter</span>
+                                <span>40%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--width: 40%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Mobile Jetpack Compose</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll" style="--delay: 0.3s">
+                    <h3 class="text-xl font-semibold mb-6">Design Skills</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>UI/UX Design</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Figma</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="--width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6">
+                <div class="bg-dark-200 p-6 rounded-lg text-center card-hover animate-on-scroll">
+                    <i class="fab fa-html5 text-4xl text-orange-500 mb-4"></i>
+                    <p>HTML5</p>
+                </div>
+                <div class="bg-dark-200 p-6 rounded-lg text-center card-hover animate-on-scroll" style="--delay: 0.1s">
+                    <i class="fab fa-css3-alt text-4xl text-blue-500 mb-4"></i>
+                    <p>CSS3</p>
+                </div>
+                <div class="bg-dark-200 p-6 rounded-lg text-center card-hover animate-on-scroll" style="--delay: 0.2s">
+                    <i class="fab fa-js text-4xl text-yellow-500 mb-4"></i>
+                    <p>JavaScript</p>
+                </div>
+                <div class="bg-dark-200 p-6 rounded-lg text-center card-hover animate-on-scroll" style="--delay: 0.3s">
+                    <i class="fab fa-react text-4xl text-blue-400 mb-4"></i>
+                    <p>React</p>
+                </div>
+                <div class="bg-dark-200 p-6 rounded-lg text-center card-hover animate-on-scroll" style="--delay: 0.4s">
+                    <i class="fab fa-node-js text-4xl text-green-500 mb-4"></i>
+                    <p>Node.js</p>
+                </div>
+                <div class="bg-dark-200 p-6 rounded-lg text-center card-hover animate-on-scroll" style="--delay: 0.5s">
+                    <i class="fab fa-laravel text-4xl text-red-500 mb-4"></i>
+                    <p>Laravel</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    {{-- <section id="projects" class="py-20 bg-dark-200">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="gradient-text">Projects</span></h2>
+                <div class="w-24 h-1 bg-primary mx-auto"></div>
+                <p class="text-gray-400 mt-6 max-w-2xl mx-auto">Here are some of my recent projects. Each project
+                    represents a unique challenge and solution.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-dark-300 rounded-lg overflow-hidden card-hover animate-on-scroll">
+                    <div class="relative">
+                        <img src="/placeholder.svg?height=250&width=400" alt="Project 1"
+                            class="w-full h-48 object-cover" />
+                        <div
+                            class="absolute inset-0 bg-primary bg-opacity-20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                            <a href="#" class="bg-primary text-white px-4 py-2 rounded-full">View Project</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">E-Commerce Website</h3>
+                        <p class="text-gray-400 mb-4">A fully responsive e-commerce platform with product filtering,
+                            cart functionality, and secure checkout.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-dark-100 text-xs px-3 py-1 rounded-full">React</span>
+                            <span class="bg-dark-100 text-xs px-3 py-1 rounded-full">Node.js</span>
+                            <span class="bg-dark-100 text-xs px-3 py-1 rounded-full">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-dark-300 rounded-lg overflow-hidden card-hover animate-on-scroll" style="--delay: 0.2s">
+                    <div class="relative">
+                        <img src="/placeholder.svg?height=250&width=400" alt="Project 2"
+                            class="w-full h-48 object-cover" />
+                        <div
+                            class="absolute inset-0 bg-primary bg-opacity-20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                            <a href="#" class="bg-primary text-white px-4 py-2 rounded-full">View Project</a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Portfolio Website</h3>
+                        <p class="text-gray-400 mb-4">A creative portfolio website for a photographer with gallery
+                            features and contact form.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-dark-100 text-xs px-3 py-1 rounded-full">HTML/CSS</span>
+                            <span class="bg-dark-100 text-xs px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-dark-100 text-xs px-3 py-1 rounded-full">PHP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#"
+                    class="bg-primary hover:bg-orange-600 text-white px-8 py-3 rounded-full transition-colors inline-block">View
+                    All Projects</a>
+            </div>
+        </div>
+    </section> --}}
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-dark-100">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">&copy; 2025 Chin Kosal.</p>
+                <div class="flex space-x-4">
+                    <a href="#home" class="text-gray-400 hover:text-primary transition-colors">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-primary transition-colors">About</a>
+                    <a href="#skills" class="text-gray-400 hover:text-primary transition-colors">Skills</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Scroll animation
+        document.addEventListener('DOMContentLoaded', function () {
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.style.getPropertyValue('--delay') || '0s';
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, parseFloat(delay) * 1000);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Initialize progress bars
+            const progressBars = document.querySelectorAll('.progress-bar');
+            setTimeout(() => {
+                progressBars.forEach(bar => {
+                    const width = bar.querySelector('.progress').style.getPropertyValue('--width');
+                    bar.style.setProperty('--width', width);
+                });
+            }, 500);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
